@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Live Stealer SMP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    background: radial-gradient(circle at top, #123b22, #000);
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #eaffea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: rgba(5, 20, 12, 0.95);
+    border: 3px solid #2eff6a;
+    box-shadow: 0 0 30px #1aff5c;
+    border-radius: 18px;
+    max-width: 460px;
+    padding: 25px;
+    text-align: center;
+    animation: glow 2.5s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 20px #1aff5c; }
+    to { box-shadow: 0 0 35px #4dff88; }
+}
+
+.icon {
+    width: 130px;
+    height: 130px;
+    border-radius: 14px;
+    border: 3px solid gold;
+    margin-bottom: 12px;
+}
+
+h1 {
+    color: gold;
+    margin: 10px 0;
+    text-shadow: 0 0 10px #ffd700;
+}
+
+.badge {
+    display: inline-block;
+    background: #000;
+    border: 2px solid #2eff6a;
+    border-radius: 8px;
+    padding: 6px 12px;
+    color: #2eff6a;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.section {
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 14px;
+}
+
+.ip-box {
+    font-size: 18px;
+    background: #000;
+    border: 2px solid #2eff6a;
+    border-radius: 10px;
+    padding: 10px;
+    user-select: all;
+    color: #2eff6a;
+}
+
+.copy-hint {
+    font-size: 12px;
+    color: #9affb5;
+    margin-top: 4px;
+}
+
+.players {
+    font-size: 15px;
+    color: #baffd1;
+}
+
+.features {
+    text-align: left;
+    font-size: 14px;
+}
+
+.features li {
+    margin: 6px 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid gold;
+    background: #000;
+    color: gold;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: gold;
+    color: #000;
+}
+
+footer {
+    font-size: 11px;
+    color: #6eff9a;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <img src="server-icon.png" class="icon" alt="Live Stealer SMP">
+
+    <h1>Live Stealer SMP</h1>
+
+    <div class="badge">Java Edition ONLY</div>
+
+    <div class="section">
+        <b>Server IP</b>
+        <div class="ip-box">45.142.112.14:20053</div>
+        <div class="copy-hint">(anklicken zum Kopieren)</div>
+    </div>
+
+    <div class="section players" id="playercount">
+        🔄 Lade Spieleranzahl...
+    </div>
+
+    <div class="section">
+        <b>Über den Server</b><br><br>
+        Survival SMP mit <b>Life-Steal-System</b>!<br>
+        Töte Spieler, stehle Herzen und dominiere den Server.<br>
+        PvP, Events & aktive Community!
+    </div>
+
+    <div class="section features">
+        <b>Features:</b>
+        <ul>
+            <li>💀 Life Steal System</li>
+            <li>⚔️ PvP aktiviert</li>
+            <li>🌍 SMP Survival</li>
+            <li>🔥 Community Events</li>
+            <li>🛡️ Fair Play & Anti-Cheat</li>
+        </ul>
+    </div>
+
+    <div class="buttons">
+        <button class="btn" onclick="alert('Discord kommt bald!')">Discord</button>
+        <button class="btn" onclick="alert('Regeln folgen bald!')">Regeln</button>
+    </div>
+
+    <footer>
+        © 2026 Live Stealer SMP
+    </footer>
+</div>
+
+<script>
+fetch("https://api.mcstatus.io/v2/status/java/45.142.112.14:20053")
+.then(res => res.json())
+.then(data => {
+    if (data.online) {
+        document.getElementById("playercount").innerHTML =
+        "🟢 Online: <b>" + data.players.online + "</b> Spieler";
+    } else {
+        document.getElementById("playercount").innerHTML =
+        "🔴 Server offline";
+    }
+})
+.catch(() => {
+    document.getElementById("playercount").innerHTML =
+    "⚠️ Spieleranzahl nicht verfügbar";
+});
+</script>
+
+</body>
+</html>
